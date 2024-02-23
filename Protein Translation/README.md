@@ -1,18 +1,39 @@
-## Getting Started
+## Protein Translation
+Translate RNA sequences into proteins.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+### Instructions
+Translate RNA sequences into proteins.
 
-## Folder Structure
+RNA can be broken into three nucleotide sequences called codons, and then translated to a polypeptide like so:
 
-The workspace contains two folders by default, where:
+RNA: "AUGUUUUCU" => translates to
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Codons: "AUG", "UUU", "UCU" => which become a polypeptide with the following sequence =>
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Protein: "Methionine", "Phenylalanine", "Serine"
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+There are 64 codons which in turn correspond to 20 amino acids; however, all of the codon sequences and resulting amino acids are not important in this exercise. If it works for one codon, the program should work for all of them. However, feel free to expand the list in the test suite to include them all.
 
-## Dependency Management
+There are also three terminating codons (also known as 'STOP' codons); if any of these codons are encountered (by the ribosome), all translation ends and the protein is terminated.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+All subsequent codons after are ignored, like this:
+
+RNA: "AUGUUUUCUUAAAUG" =>
+
+Codons: "AUG", "UUU", "UCU", "UAA", "AUG" =>
+
+Protein: "Methionine", "Phenylalanine", "Serine"
+
+Note the stop codon "UAA" terminates the translation and the final methionine is not translated into the protein sequence.
+
+Below are the codons and resulting Amino Acids needed for the exercise.
+
+Codon	Protein
+AUG	Methionine
+UUU, UUC	Phenylalanine
+UUA, UUG	Leucine
+UCU, UCC, UCA, UCG	Serine
+UAU, UAC	Tyrosine
+UGU, UGC	Cysteine
+UGG	Tryptophan
+UAA, UAG, UGA	STOP
